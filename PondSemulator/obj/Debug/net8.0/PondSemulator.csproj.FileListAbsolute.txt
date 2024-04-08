@@ -1,0 +1,14 @@
+C:\Users\anysale\source\repos\PondSemulator\PondSemulator\bin\Debug\net8.0\PondSemulator.exe
+C:\Users\anysale\source\repos\PondSemulator\PondSemulator\bin\Debug\net8.0\PondSemulator.deps.json
+C:\Users\anysale\source\repos\PondSemulator\PondSemulator\bin\Debug\net8.0\PondSemulator.runtimeconfig.json
+C:\Users\anysale\source\repos\PondSemulator\PondSemulator\bin\Debug\net8.0\PondSemulator.dll
+C:\Users\anysale\source\repos\PondSemulator\PondSemulator\bin\Debug\net8.0\PondSemulator.pdb
+C:\Users\anysale\source\repos\PondSemulator\PondSemulator\obj\Debug\net8.0\PondSemulator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\anysale\source\repos\PondSemulator\PondSemulator\obj\Debug\net8.0\PondSemulator.AssemblyInfoInputs.cache
+C:\Users\anysale\source\repos\PondSemulator\PondSemulator\obj\Debug\net8.0\PondSemulator.AssemblyInfo.cs
+C:\Users\anysale\source\repos\PondSemulator\PondSemulator\obj\Debug\net8.0\PondSemulator.csproj.CoreCompileInputs.cache
+C:\Users\anysale\source\repos\PondSemulator\PondSemulator\obj\Debug\net8.0\PondSemulator.dll
+C:\Users\anysale\source\repos\PondSemulator\PondSemulator\obj\Debug\net8.0\refint\PondSemulator.dll
+C:\Users\anysale\source\repos\PondSemulator\PondSemulator\obj\Debug\net8.0\PondSemulator.pdb
+C:\Users\anysale\source\repos\PondSemulator\PondSemulator\obj\Debug\net8.0\PondSemulator.genruntimeconfig.cache
+C:\Users\anysale\source\repos\PondSemulator\PondSemulator\obj\Debug\net8.0\ref\PondSemulator.dll
