@@ -8,7 +8,7 @@ namespace PondSemulator
 {
     internal class Perch : Fish
     {
-        Random rnd = new Random();
+        private Random rnd = new Random();
 
         public Perch(int daysWithutFoodMax, double weight, int ageMax, Diet diet, Pond pond) 
         {
@@ -25,16 +25,14 @@ namespace PondSemulator
             {
                 if (TryHunt())
                 {
-                    foreach (var fish in pond.fishes)
+                    Fish victim = pond.VictimFinder(this);
+                    if (victim != null)
                     {
-                        if (!fish.isDead && fish.weight <= weight * diet.extractionSize)
-                        {
-                            weight += fish.weight;
-                            pond.fishBiomassNow += fish.weight;
-                            fish.Dead();
-                            daysWithutFoodNow = 0;
-                            return;
-                        }
+                        WeightModification(victim.weight);
+                        pond.BiomassModification(victim.weight);
+                        victim.Dead();
+                        WithoutFoodReset();
+                        return;
                     }
                 }
                 double needFeed = diet.feedQuantity * weight;
@@ -42,7 +40,7 @@ namespace PondSemulator
                 {
                     pond.FetchFeed(needFeed);
                     weight += needFeed;
-                    pond.fishBiomassNow += needFeed;
+                    pond.BiomassModification(needFeed); 
                 }
                 else
                 {
@@ -69,8 +67,7 @@ namespace PondSemulator
             if (!isDead)
             {
                 base.Dead();
-                pond.quantityPerch--;
-                Console.WriteLine("Умер окунь");
+                pond.ReductionFishType(1, Pond.FishType.Perch);
             }
         }
     }

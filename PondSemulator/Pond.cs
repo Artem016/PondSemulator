@@ -15,33 +15,32 @@ namespace PondSemulator
             CrucianCarp
         }
 
-        public int fishQuantity;
-        public int quantityCrucianCarp;
-        public int quantityPerch;
-        public int quantityPike;
-        public double fishBiomassNow; //в килограммах
-        double fishBiomassMax; //в килограммах
-        internal double feedMassNow { get; set; } //в килограммах
-        internal double feedMassMax; //в килограммах
-        internal double feedMassGain; //в килограммах
+
+
+        public int fishQuantity { get; private set; }
+        public int quantityCrucianCarp { get; private set; }
+        public int quantityPerch { get; private set; }
+        public int quantityPike { get; private set; }
+        public int deadFishQuentityToday { get; private set; }
+        public double fishBiomassNow { get; private set; } //в килограммах
+        public double fishBiomassMax { get; private set; } //в килограммах
+        internal double feedMassNow { get;private set; } //в килограммах
+        internal double feedMassMax { get; private set; } //в килограммах
+        internal double feedMassGain { get; private set; } //в килограммах
         public List<Fish> fishes = new List<Fish>();
-        public List<Fish> deadFish = new List<Fish>();
+        private List<Fish> deadFish = new List<Fish>();
 
-        public int deadFishQuentityToday;
 
-        public void FetchFeed(double feedQuentity)
-        {
-            feedMassNow -= feedQuentity;
-        }
 
-        public Pond(double feedMassNow, double feedMassMax, double feedMassGain)
+        public Pond(double feedMassNow, double feedMassMax, double feedMassGain, double fishBiomassMax)
         {
             this.feedMassNow = feedMassNow;
             this.feedMassMax = feedMassMax;
             this.feedMassGain = feedMassGain;
+            this.fishBiomassMax = fishBiomassMax;
         }
 
-        public void AddFry(FishType fishType, int quentity = 1)
+        public void AddFry(FishType fishType, uint quentity = 1)
         {
             switch (fishType)
             {
@@ -100,6 +99,76 @@ namespace PondSemulator
         {
             if(feedMassNow < feedMassMax)
                 feedMassNow += feedMassGain;
+        }
+
+        public void BiomassModification(double modificateMass)
+        {
+            fishBiomassNow += modificateMass;
+            if (fishBiomassNow < 0.00000001)
+            {
+                fishBiomassNow = 0;
+            }
+        }
+
+        public void FishQuentityReduction(int reductionQuentity)
+        {
+            fishQuantity -= reductionQuentity;
+        }
+
+        public Fish VictimFinder(Fish predator)
+        {
+            foreach (var fish in fishes)
+            {
+                if (!fish.isDead && fish.weight <= predator.weight * predator.diet.extractionSize)
+                {
+                    predator.WeightModification(fish.weight);
+                    BiomassModification(fish.weight);
+                    fish.Dead();
+                    predator.WithoutFoodReset();
+                    return fish;
+                }
+            }
+            return null;
+        }
+
+        Random rnd = new Random();
+
+        public void Fishing() //отлов рыб рыбаками
+        {
+            Console.WriteLine("Сегодня была рыбалка");
+            foreach (var fish in fishes)
+            {
+                if (rnd.Next(0, 6) == 1)
+                {
+                    fish.Dead();
+                }
+            }
+        }
+
+        public void FetchFeed(double feedQuentity)
+        {
+            feedMassNow -= feedQuentity;
+        }
+
+        public void AddDeadFish(Fish fish)
+        {
+            deadFish.Add(fish);
+        }
+
+        public void ReductionFishType(int quentity, FishType fishType)
+        {
+            switch (fishType)
+            {
+                case FishType.Pike:
+                    quantityPike -= quentity;
+                    break;
+                case FishType.CrucianCarp:
+                    quantityCrucianCarp -= quentity;
+                    break;
+                case FishType.Perch:
+                    quantityPerch -= quentity;
+                    break;
+            }
         }
     }
 }

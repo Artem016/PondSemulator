@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Pond pond = new Pond(10, 100, 1);
+            Pond pond = new Pond(10, 100, 1, 50);
             DaysSemulator daysSemulator = new DaysSemulator();
             daysSemulator.StartSettings(pond);
 

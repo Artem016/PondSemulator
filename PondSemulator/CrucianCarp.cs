@@ -27,7 +27,7 @@ namespace PondSemulator
                 {
                     pond.FetchFeed(needFeed);
                     weight += needFeed;
-                    pond.fishBiomassNow += needFeed;
+                    pond.BiomassModification(needFeed);
                     daysWithutFoodNow = 0;
                 }
                 else
@@ -52,8 +52,7 @@ namespace PondSemulator
             if (!isDead)
             {
                 base.Dead();
-                pond.quantityCrucianCarp--;
-                Console.WriteLine("Умер карась");
+                pond.ReductionFishType(1, Pond.FishType.CrucianCarp);
             }
         }
     }

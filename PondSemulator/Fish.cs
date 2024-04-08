@@ -8,16 +8,16 @@ namespace PondSemulator
 {
     abstract internal class Fish
     {
-        public bool isDead = false;
-        public int age = 0; //в днях
-        public int ageMax { get; set; }
-        public double weight { get; set; } //в килограммах
+        public bool isDead { get; protected set; }
+        private int age = 0; //в днях
+        protected int ageMax { get; set; }
+        public double weight { get; protected set; } //в килограммах
         protected int daysWithutFoodNow = 0;
         protected int daysWithutFoodMax { get; set; }
 
-        public Pond pond;
+        public Pond pond { get; protected set; }
 
-        protected Diet diet { get; set; }
+        public Diet diet { get; protected set; }
 
         /// <summary>
         /// Увеличение возраста рыбы на входящий параметр
@@ -37,14 +37,24 @@ namespace PondSemulator
 
         internal virtual void Dead()
         {
-            isDead = true;
-            pond.deadFish.Add(this);
-            pond.fishBiomassNow -= weight;
-            pond.fishQuantity--;
-            if(pond.fishBiomassNow < 0)
+            if (!isDead)
             {
-                pond.fishBiomassNow = 0;
+                isDead = true;
+                pond.AddDeadFish(this);
+                pond.BiomassModification(-weight); //уменьшение биомассы на весь мертвой рыбы
+                pond.FishQuentityReduction(1); //уменьшение количесва рыб на одну
             }
+
+        }
+
+        public void WeightModification(double weightModificator)
+        {
+            weight += weightModificator;
+        }
+
+        public void WithoutFoodReset()
+        {
+            daysWithutFoodNow = 0; 
         }
     }
 }

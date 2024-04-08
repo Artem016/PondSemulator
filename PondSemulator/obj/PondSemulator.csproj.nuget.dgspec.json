@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\anysale\\source\\repos\\PondSemulator\\PondSemulator\\PondSemulator.csproj": {}
+    "C:\\repos\\PondSemulator\\PondSemulator\\PondSemulator.csproj": {}
   },
   "projects": {
-    "C:\\Users\\anysale\\source\\repos\\PondSemulator\\PondSemulator\\PondSemulator.csproj": {
+    "C:\\repos\\PondSemulator\\PondSemulator\\PondSemulator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\anysale\\source\\repos\\PondSemulator\\PondSemulator\\PondSemulator.csproj",
+        "projectUniqueName": "C:\\repos\\PondSemulator\\PondSemulator\\PondSemulator.csproj",
         "projectName": "PondSemulator",
-        "projectPath": "C:\\Users\\anysale\\source\\repos\\PondSemulator\\PondSemulator\\PondSemulator.csproj",
+        "projectPath": "C:\\repos\\PondSemulator\\PondSemulator\\PondSemulator.csproj",
         "packagesPath": "C:\\Users\\anysale\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\anysale\\source\\repos\\PondSemulator\\PondSemulator\\obj\\",
+        "outputPath": "C:\\repos\\PondSemulator\\PondSemulator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\anysale\\AppData\\Roaming\\NuGet\\NuGet.Config",

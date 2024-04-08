@@ -9,7 +9,7 @@ namespace PondSemulator
 {
     internal class Pike : Fish
     {
-        Random rnd = new Random();
+        private Random rnd = new Random();
 
         public Pike(int daysWithutFoodMax, double weight, int ageMax, Diet diet, Pond pond)
         {
@@ -26,16 +26,25 @@ namespace PondSemulator
             {
                 if (TryHunt())
                 {
-                    foreach (var fish in pond.fishes)
+                    Fish victim = pond.VictimFinder(this);
+                    if(victim != null)
                     {
-                        if (!fish.isDead && fish.weight <= weight * diet.extractionSize)
-                        {
-                            weight += fish.weight;
-                            fish.Dead();
-                            daysWithutFoodNow = 0;
-                            return;
-                        }
+                        WeightModification(victim.weight);
+                        pond.BiomassModification(victim.weight);
+                        victim.Dead();
+                        WithoutFoodReset();
+                        return;
                     }
+                    //foreach (var fish in pond.fishes)
+                    //{
+                    //    if (!fish.isDead && fish.weight <= weight * diet.extractionSize)
+                    //    {
+                    //        weight += fish.weight;
+                    //        fish.Dead();
+                    //        daysWithutFoodNow = 0;
+                    //        return;
+                    //    }
+                    //}
                 }
                 daysWithutFoodNow++;
                 if (!isDead && daysWithutFoodNow >= daysWithutFoodMax)
@@ -59,8 +68,7 @@ namespace PondSemulator
             if (!isDead)
             {
                 base.Dead();
-                pond.quantityPike--;
-                Console.WriteLine("Умерла щука");
+                pond.ReductionFishType(1, Pond.FishType.Pike);
             }
 
         }

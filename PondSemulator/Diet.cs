@@ -16,8 +16,8 @@ namespace PondSemulator
             Mixed
         }
 
-        bool isHerbivore { get; }
-        bool isPredator { get; }
+        public bool isHerbivore { get; }
+        public bool isPredator { get; }
 
         public double extractionSize { get; } //диапазон от нуля в процентах от массы хищника
 
