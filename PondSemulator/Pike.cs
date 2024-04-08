@@ -35,16 +35,6 @@ namespace PondSemulator
                         WithoutFoodReset();
                         return;
                     }
-                    //foreach (var fish in pond.fishes)
-                    //{
-                    //    if (!fish.isDead && fish.weight <= weight * diet.extractionSize)
-                    //    {
-                    //        weight += fish.weight;
-                    //        fish.Dead();
-                    //        daysWithutFoodNow = 0;
-                    //        return;
-                    //    }
-                    //}
                 }
                 daysWithutFoodNow++;
                 if (!isDead && daysWithutFoodNow >= daysWithutFoodMax)

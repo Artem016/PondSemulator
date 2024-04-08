@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PondSemulator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ecb6f43bc107a1250cf0627393c6281d5453b316")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d7dff766f2289de1f8e4431f18b6346febe42e0f")]
 [assembly: System.Reflection.AssemblyProductAttribute("PondSemulator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PondSemulator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
